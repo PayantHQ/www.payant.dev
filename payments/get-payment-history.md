@@ -1,6 +1,6 @@
 # Get Payments
 
-{% api-method method="post" host="" path="https://api.payant.ng/payments/history" %}
+{% api-method method="post" host="https://api.payant.ng/payments" path="" %}
 {% api-method-summary %}
 Get payment history
 {% endapi-method-summary %}
@@ -12,24 +12,36 @@ Get payment history
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-headers %}
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-parameter name="Authorization" type="string" required=true %}
+Your Payant secret key prefixed with "Bearer "
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="period" type="string" required=true %}
-History period, `today`, `week`, `month`, `30`, `90`, `year` or `custom`
+{% api-method-query-parameters %}
+{% api-method-parameter name="start" type="string" required=false %}
+Start Date DD/MM/YYYY
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="start" type="string" required=true %}
-Starting date `DD/MM/YYYY`
+{% api-method-parameter name="end" type="string" required=false %}
+End Date DD/MM/YYYY
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="end" type="string" required=true %}
-End date `DD/MM/YYYY`
+{% api-method-parameter name="offset" type="string" required=false %}
+Current Page. Defaults to `0`
 {% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
+
+{% api-method-parameter name="limit" type="string" required=false %}
+Records to return count `1` - `50`
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="method" type="string" required=false %}
+Channel of payment received `Card`, `Bank`, `USSD`, `mCash`, `QR`
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="client\_id" type="string" required=false %}
+Client ID
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
@@ -139,6 +151,17 @@ curl https://api.payant.ng/payments/history \
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+### Request
+
+```bash
+curl https://api.payant.ng/payments/history \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer SECRET_KEY" \
+-X POST 
+```
+
+### Response
 
 ```javascript
 {

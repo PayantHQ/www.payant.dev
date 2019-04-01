@@ -19,7 +19,7 @@ Invoice reference code
 
 {% api-method-headers %}
 {% api-method-parameter name="Authorization" type="string" required=true %}
- Your Payant secret key prefixed with "Bearer "
+Your Payant secret key prefixed with "Bearer "
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 {% endapi-method-request %}
