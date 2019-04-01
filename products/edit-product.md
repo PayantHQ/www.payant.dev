@@ -1,6 +1,6 @@
 # Edit Product
 
-{% api-method method="put" host="" path="https://api.payant.ng/products/:product\_id" %}
+{% api-method method="put" host="https://api.payant.ng/products/:reference\_code" path="" %}
 {% api-method-summary %}
 Edit Product
 {% endapi-method-summary %}
@@ -86,4 +86,39 @@ curl https://api.payant.ng/products/1 \
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+### Request
+
+```bash
+curl https://api.payant.ng/products/1 \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer SECRET_KEY" \
+-d '{ "name": "Website Design",
+    "description": "5 Pages Website plus 1 Year Web Hosting",
+    "unit_cost": "50000.00",
+    "list_cost": "60000.00",    
+    "status": "1" }' \
+-X PUT 
+```
+
+### Response
+
+```javascript
+{
+  "status": "success",
+  "message": "Product updated successfully.",
+  "data": {
+    "company_id": 1,
+    "name": "Website Design",
+    "description": "5 Pages Website plus 1 Year Web Hosting",
+    "unit_cost": "50000.00",
+    "type": "service",
+    "image": "default.png",
+    "status": "1",
+    "created_at": "2016-12-21 18:46:30",
+    "updated_at": "2016-12-21 18:46:30",
+    "id": 1
+  }
+}
+```
 
