@@ -1,6 +1,6 @@
 # Add Client
 
-{% api-method method="post" host="" path="https://api.payant.ng/clients" %}
+{% api-method method="post" host="https://api.payant.ng/clients" path="" %}
 {% api-method-summary %}
 Add Client
 {% endapi-method-summary %}
@@ -12,14 +12,14 @@ Add Client
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-headers %}
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-parameter name="Authorization" type="string" required=true %}
+Payant secret key prefixed with "Bearer "
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
 {% api-method-parameter name="company\_name" type="string" required=false %}
-Client's company name
+Client's company or full name
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="first\_name" type="string" required=true %}
@@ -41,44 +41,11 @@ Client's phone number
 {% api-method-parameter name="address" type="string" required=false %}
 Client's address
 {% endapi-method-parameter %}
-
-{% api-method-parameter name="type" type="string" required=false %}
-Client's  type, `Customer`, `Staff` or `Vendor`
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="settlement\_bank" type="string" required=false %}
-Clent's settlement bank
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="account\_number" type="string" required=false %}
-Client's account number
-{% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
-```javascript
-curl https://api.payant.ng/clients \
--H "Content-Type: application/json" \
--H "Authorization: Bearer SECRET_KEY" \
--d '{ "company_name": "Albert Specialist Hospital",
-    "first_name": "Albert",
-    "last_name": "Jane",
-    "email": "jane@alberthospital.com",
-    "phone": "+2348012345678",
-    "website": "http://www.alberthospital.com",
-    "address": "Wase II",
-    "type": "Customer" }' \
--X POST 
-```
-{% endapi-method-response-example %}
-
-{% api-method-response-example httpCode=302 %}
 {% api-method-response-example-description %}
 
 {% endapi-method-response-example-description %}
@@ -111,4 +78,47 @@ curl https://api.payant.ng/clients \
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+### Request
+
+```bash
+curl https://api.payant.ng/clients \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer SECRET_KEY" \
+-d '{ "company_name": "Albert Specialist Hospital",
+    "first_name": "Albert",
+    "last_name": "Jane",
+    "email": "jane@alberthospital.com",
+    "phone": "+2348012345678",
+    "website": "http://www.alberthospital.com",
+    "address": "Wase II" }' \
+-X POST 
+```
+
+### Response
+
+```javascript
+{
+  "status": "success",
+  "message": "Client created successfully.",
+  "data": {
+    "company_id": 1,
+    "name": "Albert Specialist Hospital",
+    "first_name": "Albert",
+    "last_name": "Jane",
+    "email": "jane@alberthospital.com",
+    "phone": "+2348012345678",
+    "website": "http://www.alberthospital.com",
+    "address": "Wase II",
+    "type": "Customer",
+    "settlement_bank": "",
+    "account_name": "",
+    "account_number": "",
+    "status": "1",
+    "created_at": "2016-12-21 17:19:10",
+    "updated_at": "2016-12-21 17:19:10",
+    "id": 1
+  }
+}
+```
 

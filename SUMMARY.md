@@ -44,10 +44,8 @@
 
 * [Add Wallet](wallets/add-wallet.md)
 * [Get Wallet](wallets/get-wallet.md)
-* [Edit Wallet](wallets/edit-wallet.md)
-* [Disable / Enable Wallet](wallets/disable-enable-wallet.md)
-* [Get Wallet Transactions](wallets/wallet-transactions.md)
 * [Get Wallets](wallets/get-wallets.md)
+* [Get Wallet Transactions](wallets/wallet-transactions.md)
 
 ## Clients
 
