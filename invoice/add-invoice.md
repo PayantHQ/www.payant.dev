@@ -1,6 +1,6 @@
 # Add Invoice
 
-{% api-method method="post" host="" path="https://api.payant.ng/invoices" %}
+{% api-method method="post" host="https://api.payant.ng/invoices" path="" %}
 {% api-method-summary %}
 Add Invoice
 {% endapi-method-summary %}
@@ -12,54 +12,26 @@ Add Invoices
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-headers %}
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-parameter name="Authorization" type="string" required=true %}
+Your Payant API Key prefixed with "Bearer " 
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
+{% api-method-parameter name="payment\_methods" type="string" required=false %}
+Payment methods to be allowed on this invoice seperated by comma "**,**" `card`, `account`, `phone`, `qr`
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="currency" type="string" required=false %}
+3 Character currency code for invoice `NGN` or `USD`
+{% endapi-method-parameter %}
+
 {% api-method-parameter name="client" type="array" required=true %}
-Client Data
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="company\_name" type="string" required=true %}
-Client's company name
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="first\_name" type="string" required=true %}
-Client's first name
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="last\_name" type="string" required=true %}
-Client's last name
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="email" type="string" required=true %}
-Client's email
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="phone" type="string" required=true %}
-Client's phone number
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="address" type="string" required=false %}
-Client's address
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="type" type="string" required=false %}
-Client's type, `customer`, `staff` or `vendor`
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="settlement\_bank" type="string" required=false %}
-Client's settlement bank
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="account\_number" type="string" required=false %}
-Client's account number
+Client Data - See Table Below for Structure
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="client\_id" type="string" required=true %}
-Client ID
+Client ID - Only required if `client` above does not exist in request.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="due\_date" type="string" required=true %}
@@ -79,35 +51,11 @@ Card token generated from a tokenized transaction to automatically make payment 
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="items" type="array" required=true %}
-Invoice items
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="item" type="string" required=true %}
-Item's names
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="description" type="string" required=true %}
-Item's description
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="unit\_cost" type="string" required=true %}
-Item's unit cost
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="quantity" type="string" required=true %}
-Item's quantity
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="recipient" type="string" required=false %}
-Invoice payment recipent `account`, or `wallet` Defaults to `account`
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="recipient\_id" type="string" required=false %}
-Invoice payment recipient id \(Wallet Ref.\) Required if recipient is `wallet`
+Invoice items - See Table Below for Structure 
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="merchant\_ref" type="string" required=false %}
-Merchant's unique invoice refrence code
+Merchant's unique invoice reference code
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="metadata" type="string" required=false %}
@@ -118,34 +66,6 @@ Key-value pairs object
 
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
-```javascript
-curl https://api.payant.ng/invoices \
--H "Content-Type: application/json" \
--H "Authorization: Bearer SECRET_KEY" \
--d '{ "client": {
-            "first_name": "Albert",
-            "last_name": "Jane",
-            "email": "jane@alberthospital.com",
-            "phone": "+2348012345678"
-        },
-        "due_date": "12/30/2016",
-        "fee_bearer": "client",
-        "items": [
-            "item": "Website Design",
-            "description": "5 Pages Website plus 1 Year Web Hosting",
-            "unit_cost": "50000.00",
-            "quantity": "1"
-        ] 
-    }' \
--X POST 
-```
-{% endapi-method-response-example %}
-
-{% api-method-response-example httpCode=302 %}
 {% api-method-response-example-description %}
 
 {% endapi-method-response-example-description %}
@@ -210,11 +130,199 @@ curl https://api.payant.ng/invoices \
 {% endapi-method-spec %}
 {% endapi-method %}
 
+#### Client Data
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameters</th>
+      <th style="text-align:left"><b>Description</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">company_name</td>
+      <td style="text-align:left">
+        <p><b>String</b>
+        </p>
+        <p>Client&apos;s company or full name</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">first_name
+        <br />required</td>
+      <td style="text-align:left"><b>String</b>
+        <br />Client&apos;s first name</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">last_name
+        <br />required</td>
+      <td style="text-align:left"><b>String</b>
+        <br />Client&apos;s last name</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">email
+        <br />required</td>
+      <td style="text-align:left"><b>String</b>
+        <br />Client&apos;s email address</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">email_cc</td>
+      <td style="text-align:left">
+        <p><b>String</b>
+        </p>
+        <p>Comma separated emails to copy for invoices and payment receipts</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">phone
+        <br />required</td>
+      <td style="text-align:left"><b>String</b>
+        <br />Client&apos;s phone number</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">address</td>
+      <td style="text-align:left"><b>String</b>
+        <br />Client&apos;s address</td>
+    </tr>
+  </tbody>
+</table>#### Items Object Data
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left"><b>Description</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>item</p>
+        <p><em>required</em>
+        </p>
+      </td>
+      <td style="text-align:left">
+        <p><b>String</b>
+        </p>
+        <p>Item&apos;s name</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">description
+        <br /><em>required</em>
+      </td>
+      <td style="text-align:left"><b>String</b>
+        <br />Item&apos;s description</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">unit_cost
+        <br /><em>required</em>
+      </td>
+      <td style="text-align:left"><b>String</b>
+        <br />Item&apos;s unit cost</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">quantity
+        <br /><em>required</em>
+      </td>
+      <td style="text-align:left"><b>String</b>
+        <br />Item&apos;s quantity</td>
+    </tr>
+  </tbody>
+</table>{% hint style="info" %}
+**Heads up!**
+
+Please contact [Payant Support](https://payant.ng/support) for you to start tokenizing cards and accepting recurring payments.
+{% endhint %}
+
 {% hint style="warning" %}
 **Heads up!**
 
 Only one of `client` or `client_id` is required per invoice. The `client` parameter will allow you to add a new customer while invoicing on the fly in case you don't have a `client_id`. Client will not be added if already exist.
-
-For you to tokenize cards, please contact Payant Support.
 {% endhint %}
+
+### Request
+
+```bash
+curl https://api.payant.ng/invoices \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer SECRET_KEY" \
+-d '{ "client": {
+            "first_name": "Albert",
+            "last_name": "Jane",
+            "email": "jane@alberthospital.com",
+            "phone": "+2348012345678"
+        },
+        "due_date": "12/30/2016",
+        "fee_bearer": "client",
+        "items": [
+            "item": "Website Design",
+            "description": "5 Pages Website plus 1 Year Web Hosting",
+            "unit_cost": "50000.00",
+            "quantity": "1"
+        ] 
+    }' \
+-X POST
+```
+
+### Response
+
+```javascript
+{
+  "status": "success",
+  "message": "Invoice created successfully.",
+  "data": {
+    "id": 1,
+    "company_id": "1",
+    "client_id": "1",
+    "reference_code": "j9CbiTN0oJe4vWhglyS2",
+    "payment_id": null,
+    "fee_bearer": "client",
+    "mail_status": "unsent",
+    "status": "0",
+    "due_date": "1483056000",
+    "created_at": "2016-12-21 18:46:30",
+    "updated_at": "2016-12-21 18:46:30",
+    "deleted_at": null,
+    "client": {
+        "id": 1
+        "company_id": 1,
+        "name": "Albert Specialist Hospital",
+        "first_name": "Albert",
+        "last_name": "Jane",
+        "email": "jane@alberthospital.com",
+        "phone": "+2348012345678",
+        "website": "http://www.alberthospital.com",
+        "address": "Wase II",
+        "type": "Customer",
+        "settlement_bank": "",
+        "account_name": "",
+        "account_number": "",
+        "status": "1",
+        "created_at": "2016-12-21 17:19:10",
+        "updated_at": "2016-12-21 17:19:10",
+        "deleted_at": null
+    },
+    "items": [
+        {
+            "id": "1",
+            "company_id": "1",
+            "client_id": "1",
+            "name": "Website Design",
+            "description": "5 Pages Website plus 1 Year Web Hosting",
+            "quantity": "1",
+            "unit_cost": "50000.00",
+            "status": "0",
+            "due_date": "1483056000",
+            "created_at": "2016-12-21 17:19:10",
+            "updated_at": "2016-12-21 17:19:10",
+            "deleted_at": null
+        }
+    ]
+  }
+}
+```
 

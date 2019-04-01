@@ -27,19 +27,18 @@
 * [Add Invoice](invoice/add-invoice.md)
 * [Get Invoice](invoice/get-invoice.md)
 * [Send Invoice](invoice/send-invoice.md)
-* [Get Invoice](invoice/get-invoice-1.md)
 * [Delete Invoice](invoice/delete-invoice.md)
 * [Get Invoices](invoice/get-invoice-history.md)
+
+## Banks
+
+* [Get Banks](banks/get-banks.md)
+* [Resolve Bank Account](banks/resolve-account.md)
 
 ## Transfers
 
 * [Single Transfer](transfers/withdraw-from-wallet.md)
 * [Bulk Transfer](transfers/withdraw-from-wallet-bulk.md)
-
-## Banks
-
-* [Get Banks](banks/get-banks.md)
-* [Resolve Account](banks/resolve-account.md)
 
 ## Wallets
 
@@ -58,15 +57,9 @@
 * [Delete Client](client/delete-client.md)
 * [Get Clients](client/get-clients.md)
 
-## Store
-
-* [Add Store](store/add-store.md)
-* [Get Store](store/get-store.md)
-* [Edit Store](store/edit-store.md)
-* [Get Stores](store/get-stores.md)
-
 ## Products
 
+* [Get Stores](products/get-stores.md)
 * [Add Product](products/add-product.md)
 * [Get Product](products/get-product.md)
 * [Edit Product](products/edit-product.md)

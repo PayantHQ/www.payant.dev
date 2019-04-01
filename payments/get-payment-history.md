@@ -2,7 +2,7 @@
 
 {% api-method method="post" host="https://api.payant.ng/payments" path="" %}
 {% api-method-summary %}
-Get payment history
+Get Payments
 {% endapi-method-summary %}
 
 {% api-method-description %}
@@ -46,22 +46,6 @@ Client ID
 
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
-```javascript
-curl https://api.payant.ng/payments/history \
--H "Content-Type: application/json" \
--H "Authorization: Bearer SECRET_KEY" \
--d '{ "period": "custom", 
- "start": "01/12/2016", 
- "end": "31/12/2016" }' \
--X POST 
-```
-{% endapi-method-response-example %}
-
-{% api-method-response-example httpCode=302 %}
 {% api-method-response-example-description %}
 
 {% endapi-method-response-example-description %}
@@ -155,7 +139,7 @@ curl https://api.payant.ng/payments/history \
 ### Request
 
 ```bash
-curl https://api.payant.ng/payments/history \
+curl https://api.payant.ng/payments \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer SECRET_KEY" \
 -X POST 
