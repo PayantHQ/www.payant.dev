@@ -121,6 +121,16 @@ Payment methids to show on checkout can be a combination of `card`, `bank`, `pho
 
 {% endapi-method-response-example-description %}
 
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+### Sample Code
+
 ```markup
 <form>
   <script src="https://api.payant.ng/assets/js/inline.min.js"></script>
@@ -159,10 +169,6 @@ Payment methids to show on checkout can be a combination of `card`, `bank`, `pho
   }
 
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
 
 {% hint style="info" %}
 **Heads up!**
