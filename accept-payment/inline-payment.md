@@ -167,6 +167,7 @@ Payment methids to show on checkout can be a combination of `card`, `bank`, `pho
 
     handler.openIframe();
   }
+</script>
 
 ```
 
