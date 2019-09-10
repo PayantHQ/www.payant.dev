@@ -8,7 +8,7 @@ Payant uses conventional HTTP response codes to indicate the success or failure 
 | 400 | The request was unacceptable, often due to missing a required parameter. |
 | 401 | No valid API key provided. |
 | 404 | The requested resource doesn't exist. |
-| 500-504 | Something went wrong on Stripe's end. These are rare and if they happen, please [contact us](https://payant.ng/support) immediately. |
+| 500-504 | Something went wrong on Payant's end. These are rare and if they happen, please [contact us](https://payant.ng/support) immediately. |
 
 
 
