@@ -26,7 +26,7 @@ Inline Payment
 
 {% api-method-body-parameters %}
 {% api-method-parameter name="key " type="string" required=true %}
-Invoice refrence code if already exists
+API PUBLIC KEY
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="reference\_code" type="string" required=true %}
