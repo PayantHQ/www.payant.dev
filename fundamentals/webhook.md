@@ -31,7 +31,7 @@ When your endpoint receives the verification request, it must:
 
 ### **Notification Request**
 
-Whenever their are changes on your account, we will send a POST request to your webhook endpoint. The request will have a JSON payload as follows:
+Whenever there are changes on your account, we will send a POST request to your webhook endpoint. The request will have a JSON payload as follows:
 
 * `type` - Notification type
 * `data` - An array containing the notification data
